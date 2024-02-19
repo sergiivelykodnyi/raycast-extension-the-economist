@@ -28,3 +28,10 @@ export function formatTitle(title: string | undefined): string {
 
   return title.length > 79 ? `${title.substring(0, 79)}...` : title;
 }
+
+/**
+ * Convert a CamelCase string to a "start case" string
+ */
+export function startCase(input: string): string {
+  return input.replace(/([A-Z])/g, " $1").trim();
+}

@@ -4,7 +4,7 @@ import { usePromise } from "@raycast/utils";
 import { Item } from "rss-parser";
 import { getFeed } from "./feed";
 import { Topic } from "./types";
-import { formatTitle, getIcon } from "./utils";
+import { formatTitle, getIcon, startCase } from "./utils";
 
 export default function Command() {
   const [topic, setTopic] = useState<Topic | null>(null);
@@ -16,12 +16,12 @@ export default function Command() {
       searchBarAccessory={
         <List.Dropdown
           tooltip="Select Page"
-          defaultValue={Topic.TheWorldThisWeek}
+          defaultValue={startCase(Topic.TheWorldThisWeek)}
           storeValue
           onChange={(newValue) => setTopic(newValue as Topic)}
         >
           {Object.entries(Topic).map(([name, value]) => (
-            <List.Dropdown.Item key={value} title={name} value={value} />
+            <List.Dropdown.Item key={value} title={startCase(name)} value={value} />
           ))}
         </List.Dropdown>
       }
